@@ -27,4 +27,4 @@ mv apache-tomcat* $TOMCAT_8
 echo 2 | update-alternatives --config java
 
 # Give the mop user read access.
-chmod a+r /opt/tomcat
+chmod -R a+r /opt/tomcat
