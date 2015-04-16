@@ -1,0 +1,29 @@
+#!/bin/bash
+OPEN_JDK_7=/usr/lib/jvm/java-7-openjdk-amd64/jre
+OPEN_JDK_8=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+TOMCAT_7=/opt/tomcat/7.0.61
+TOMCAT_8=/opt/tomcat/8.0.21
+
+TOMCAT=$TOMCAT_7
+OPEN_JDK=$OPEN_JDK_7
+
+export JRE_HOME=$OPEN_JDK
+export JAVA_HOME=$OPEN_JDK
+export CATALINA_HOME=$TOMCAT
+export CATALINA_BASE=$APP_DIR
+export CATALINE_OUT=/mnt/log/app.log
+export CATALINA_TMPDIR=/mnt/tmp
+
+# export CATALINA_OPTS
+# export CATALINA_PID
+
+mkdir -p $APP_DIR/webapps
+mv $APP_DIR/*.war $APP_DIR/webapps
+
+cp -R $TOMCAT/conf $APP_DIR/conf
+mkdir -p $APP_DIR/logs
+mkdir -p $APP_DIR/work
+mkdir -p $APP_DIR/temp
+
+exec $CATALINA_HOME/bin/catalina.sh run
