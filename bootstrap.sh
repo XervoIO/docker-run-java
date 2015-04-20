@@ -2,6 +2,10 @@
 set -e
 set -x
 
+TEMP_DIR=/tmp
+TMPDIR=/tmp
+TMP_DIR=/tmp
+
 add-apt-repository ppa:openjdk-r/ppa
 apt-get update
 
