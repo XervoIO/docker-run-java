@@ -5,7 +5,7 @@ set -x
 add-apt-repository ppa:openjdk-r/ppa
 apt-get update
 
-apt-get install -y wget openjdk-7-jdk openjdk-8-jdk
+apt-get install -y --force-yes wget openjdk-7-jdk openjdk-8-jdk
 
 TOMCAT_7=7.0.61
 TOMCAT_8=8.0.21
