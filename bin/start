@@ -33,4 +33,4 @@ mkdir -p $APP_DIR/logs
 mkdir -p $APP_DIR/work
 mkdir -p $APP_DIR/temp
 
-exec $CATALINA_HOME/bin/catalina.sh run
+exec $CATALINA_HOME/bin/catalina.sh run $EXEC_ARGS
