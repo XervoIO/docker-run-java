@@ -7,12 +7,15 @@ OPEN_JDK_8=/usr/lib/jvm/java-8-openjdk-amd64/jre
 TOMCAT_7=/opt/tomcat/7.0.61
 TOMCAT_8=/opt/tomcat/8.0.21
 
-TOMCAT=$TOMCAT_8
-OPEN_JDK=$OPEN_JDK_8
+TOMCAT=$TOMCAT_7
+OPEN_JDK=$OPEN_JDK_7
 
-if [ $MODULUS_CONFIG_ENGINES_JAVA = "7" ]; then
-  TOMCAT=$TOMCAT_7
-  OPEN_JDK=$OPEN_JDK_7
+if [ "$MODULUS_CONFIG_ENGINES_JAVA" = "8" ]; then
+  OPEN_JDK=$OPEN_JDK_8
+fi
+
+if [ "$MODULUS_CONFIG_ENGINES_TOMCAT" = "8" ]; then
+  TOMCAT=$TOMCAT_8
 fi
 
 export JRE_HOME=$OPEN_JDK
@@ -22,8 +25,16 @@ export CATALINA_BASE=$APP_DIR
 export CATALINE_OUT=/mnt/log/app.log
 export CATALINA_TMPDIR=/mnt/tmp
 
+JAVA_MEM=128m #TODO: 75%
+JAVA_PERM_SIZE=128m #TODO: 25%
+
 # Speed up the random generation.
 export CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom
+
+# If user specified JAVA_OPTS, use those.
+if [ -z "$JAVA_OPTS" ]; then
+  export JAVA_OPTS="-Xms$JAVA_MEM -Xmx$JAVA_MEM -XX:MaxPermSize=$JAVA_PERM_SIZE"
+fi
 
 mkdir -p $APP_DIR/webapps
 mv $APP_DIR/*.war $APP_DIR/webapps || true
