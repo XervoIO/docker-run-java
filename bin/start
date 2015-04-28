@@ -33,7 +33,7 @@ export CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom
 
 # If user specified JAVA_OPTS, use those.
 if [ -z "$JAVA_OPTS" ]; then
-  export JAVA_OPTS="-Xms$JAVA_MEM -Xmx$JAVA_MEM -XX:MaxPermSize=$JAVA_PERM_SIZE"
+  export JAVA_OPTS="-Xms${JAVA_MEM}M -Xmx${JAVA_MEM}M -XX:MaxPermSize=${JAVA_PERM_SIZE}M"
 fi
 
 mkdir -p $APP_DIR/webapps
