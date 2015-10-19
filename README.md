@@ -21,8 +21,8 @@ All Modulus images enforce a strict data convention for security and ease of orc
 The only requirement for a basic running container is to put the Java war file in the app folder. Then mount this directory to /mnt inside the container.
 
 ``` text
-$ docker pull onmodulus/docker-run-java:latest
-$ docker run -v /host-folder:/mnt -p 80:8080 onmodulus/docker-run-java:latest start
+$ docker pull onmodulus/run-java
+$ docker run -v /host-folder:/mnt -p 80:8080 onmodulus/run-java start
 ```
 
 All Modulus run images have a binary available in the PATH named "start" that is a script designed to run the inner application. The start script is the most important part of each image type and is what's responsible for properly running the underlying application.
@@ -43,7 +43,7 @@ stdout_logfile=/mnt/log/app.log
 Save this to /host-folder/supervisor.conf and run the container.
 
 ``` text
-$ docker run -v /host-folder:/mnt -p 80:8080 onmodulus/docker-run-java:latest
+$ docker run -v /host-folder:/mnt -p 80:8080 onmodulus/run-java
 ```
 
 # License
@@ -52,4 +52,3 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
