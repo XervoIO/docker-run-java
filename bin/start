@@ -4,8 +4,8 @@ set -e
 OPEN_JDK_7=/usr/lib/jvm/java-7-openjdk-amd64/jre
 OPEN_JDK_8=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
-TOMCAT_7=/opt/tomcat/7.0.61
-TOMCAT_8=/opt/tomcat/8.0.21
+TOMCAT_7=/opt/tomcat/7.0.70
+TOMCAT_8=/opt/tomcat/8.0.36
 
 TOMCAT=$TOMCAT_7
 OPEN_JDK=$OPEN_JDK_7
